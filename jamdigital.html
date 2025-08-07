@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jam Digital</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .clock {
+      color: #39ff14;
+      font-size: 5em;
+      letter-spacing: 0.1em;
+      background: #161b22;
+      padding: 30px 60px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #39ff14, 0 0 60px #39ff14;
+      user-select: none;
+    }
+
+    @media (max-width: 500px) {
+      .clock {
+        font-size: 3em;
+        padding: 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="jam"></div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours().toString().padStart(2, '0');
+      let m = now.getMinutes().toString().padStart(2, '0');
+      let s = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('jam').textContent = `${h}:${m}:${s}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // jalankan sekali saat load
+  </script>
+</body>
+</html>
